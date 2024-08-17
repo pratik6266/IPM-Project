@@ -1,98 +1,104 @@
 package com.example.criminal_record;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CriminalRecordManager {
     private String name;
     private String crimeType;
     private String crimeDetails;
-
-    //few details like photo, fingerprints are to be added
-    private String bloodGroup;
-
+    private String punishmentLevel;
     private String location;
-    private Map<String,String> meetups; //name and relation to the person; date and time of meetup
+    private String bloodGroup;
     private String healthCondition;
-    private List<String> AssignedWorks;
-    private String punishmentPeriod;//in years, months and days
+    private String photoView1;
+    private String photoView2;
+    private String photoView3;
+    private String fingerprint;
+    private String retinaScan;
+    private String dnaInfo;
+    private String cellNo;
+    private String jailName;
+    private Map<String, String> meetings = new HashMap<>();
+    private Map<String, String> assignedWorks = new HashMap<>();
 
-    public String getName()
+    // Setters and Getters
+    public void setName(String name) { this.name = name; }
+    public String getName() { return name; }
+
+    public void setCrimeDetails(String type, String details) {
+        this.crimeType = type;
+        this.crimeDetails = details;
+    }
+
+    public void setLocation(String location) { this.location = location; }
+    public String getLocation() { return location; }
+
+    public void setBloodGroup(String bloodGroup) { this.bloodGroup = bloodGroup; }
+    public String getBloodGroup() { return bloodGroup; }
+
+    public void setHealthCondition(String healthCondition) { this.healthCondition = healthCondition; }
+    public String getHealthCondition() { return healthCondition; }
+
+    public void setPhotos(String view1, String view2, String view3) {
+        this.photoView1 = view1;
+        this.photoView2 = view2;
+        this.photoView3 = view3;
+    }
+
+    public void setPunishmentLevel(String newPunishmentLevel)
     {
-        return this.name;
+        this.punishmentLevel = newPunishmentLevel;
     }
 
-    public String getCrimeDetails()
+    public String getPunishmentLevel()
     {
-        return this.crimeType+" : \n"+crimeDetails;
+        return this.punishmentLevel;
     }
 
-    public String getBloodGroup()
-    {
-        return this.bloodGroup;
+    public String getPhotoView1() { return photoView1; }
+    public String getPhotoView2() { return photoView2; }
+    public String getPhotoView3() { return photoView3; }
+
+    public void setFingerprint(String fingerprint) { this.fingerprint = fingerprint; }
+    public String getFingerprint() { return fingerprint; }
+
+    public void setRetinaScan(String retinaScan) { this.retinaScan = retinaScan; }
+    public String getRetinaScan() { return retinaScan; }
+
+    public void setDnaInfo(String dnaInfo) { this.dnaInfo = dnaInfo; }
+    public String getDnaInfo() { return dnaInfo; }
+
+    public void setCurrentLocation(String cellNo, String jailName) {
+        this.cellNo = cellNo;
+        this.jailName = jailName;
     }
 
-    public String getLocation()
-    {
-        return this.location;
+    public String getCellNo() { return cellNo; }
+    public String getJailName() { return jailName; }
+
+    public void addMeeting(String outsiderName, String meetingDetails) {
+        meetings.put(outsiderName, meetingDetails);
     }
 
-    public Map<String,String> getMeetups()
-    {
-        return this.meetups;
+    public Map<String, String> getMeetings() { return meetings; }
+
+    public void assignWork(String taskName, String taskDetails) {
+        assignedWorks.put(taskName, taskDetails);
     }
 
-    public String getHealthCondition(){
-        return this.healthCondition;
-    }
+    public Map<String, String> getAssignedWorks() { return assignedWorks; }
 
-    public List<String> getAssignedWorks() {
-        return this.AssignedWorks;
-    }
-
-    public String getPunishmentPeriod()
-    {
-        return this.punishmentPeriod;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public void setCrimeDetails(String crimeType,String crimeDetails)
-    {
-        this.crimeType = crimeType;
-        this.crimeDetails = crimeDetails;
-    }
-
-    public void setBloodGroup(String bloodGroup)
-    {
-        this.bloodGroup = bloodGroup;
-    }
-
-    public void setLocation(String location)
-    {
-        this.location = location;
-    }
-
-    public void setMeetups(Map<String,String> meetups)
-    {
-        this.meetups = meetups;
-    }
-
-    public void setHealthCondition(String healthCondition)
-    {
-        this.healthCondition = healthCondition;
-    }
-
-    public void setAssignedWorks(List<String> Works)
-    {
-        this.AssignedWorks = Works;
-    }
-
-    public void setPunishmentPeriod(String period)
-    {
-        this.punishmentPeriod = period;
+    // Search functionality
+    public boolean matchesSearchCriteria(String name, String bloodGroup, String crimeType,
+                                         String cellNo, String dnaInfo, String photoView) {
+        return (name != null && name.equals(this.name)) ||
+                (bloodGroup != null && bloodGroup.equals(this.bloodGroup)) ||
+                (crimeType != null && crimeType.equals(this.crimeType)) ||
+                (cellNo != null && cellNo.equals(this.cellNo)) ||
+                (dnaInfo != null && dnaInfo.equals(this.dnaInfo)) ||
+                (photoView != null && (photoView.equals(this.photoView1) ||
+                        photoView.equals(this.photoView2) ||
+                        photoView.equals(this.photoView3)));
     }
 }
