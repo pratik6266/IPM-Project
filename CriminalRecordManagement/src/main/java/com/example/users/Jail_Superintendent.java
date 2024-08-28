@@ -7,15 +7,15 @@ import java.util.Scanner;
 public class Jail_Superintendent {
 
     private String name;
-    private String JailerID;
+    private String jailerID;
     private String location;
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setJailerID(String JailerID) {
-        this.JailerID = JailerID;
+    public void setJailerID(String jailerID) {
+        this.jailerID = jailerID;
     }
 
     public void setLocation(String location) {
@@ -27,7 +27,7 @@ public class Jail_Superintendent {
     }
 
     public String getJailerID() {
-        return this.JailerID;
+        return this.jailerID;
     }
 
     public String getLocation() {
@@ -39,28 +39,8 @@ public class Jail_Superintendent {
         CriminalRecordManager crm = new CriminalRecordManager();
         crm.setName(crName);
         crm.setCrimeDetails(crType, crDetails);
-        crm.setLocation(location);
+        crm.setCrimeLocation(location);
         crm.setBloodGroup(bloodGroup);
-
-        System.out.println("Enter photo view 1:");
-        String photo1 = sc.nextLine();
-        System.out.println("Enter photo view 2:");
-        String photo2 = sc.nextLine();
-        System.out.println("Enter photo view 3:");
-        String photo3 = sc.nextLine();
-        crm.setPhotos(photo1, photo2, photo3);
-
-        System.out.println("Enter fingerprint:");
-        String fingerprint = sc.nextLine();
-        crm.setFingerprint(fingerprint);
-
-        System.out.println("Enter retina scan:");
-        String retinaScan = sc.nextLine();
-        crm.setRetinaScan(retinaScan);
-
-        System.out.println("Enter DNA information:");
-        String dnaInfo = sc.nextLine();
-        crm.setDnaInfo(dnaInfo);
 
         if (healthIssues) {
             System.out.println("Enter health details:");
@@ -69,12 +49,24 @@ public class Jail_Superintendent {
         } else {
             crm.setHealthCondition("N/A");
         }
+
+        if (crm.addCriminal()) {
+            System.out.println("Criminal added successfully.");
+        } else {
+            System.out.println("Failed to add criminal.");
+        }
     }
 
-    public void updateCriminal(CriminalRecordManager crm, String crName, String newCrimeType, String newCrimeDetails) {
-        // Implement the update functionality
-        crm.setName(crName);
+    public void updateCriminal(CriminalRecordManager crm, int criminalID, String newName, String newCrimeType, String newCrimeDetails) {
+        // Set the updated values
+        crm.setName(newName);
         crm.setCrimeDetails(newCrimeType, newCrimeDetails);
+
+        if (crm.updateCriminal(criminalID)) {
+            System.out.println("Criminal record updated successfully.");
+        } else {
+            System.out.println("Failed to update criminal record.");
+        }
     }
 
     public void recordMeeting(CriminalRecordManager crm, String outsiderName, String meetingDetails) {
