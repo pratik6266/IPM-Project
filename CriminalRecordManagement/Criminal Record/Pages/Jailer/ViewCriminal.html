@@ -1,40 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Jailer View Criminal</title>
-        <link rel="stylesheet" href="../../Styles/Jailer/ViewCriminal.css">
-    </head>
-    <body>
-        <div class="header">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jailer View Criminal</title>
+    <link rel="stylesheet" href="../../Styles/Jailer/ViewCriminal.css">
+</head>
+<body>
+    <div class="header">
 
-            <div class="left">
-                <img class="header-logo-1" src="../../images/main_logo.png">
-                <img class="header-logo-2" src="../../images/ncrc_logo.png">
-                <img class="header-logo-4" src="../../images/G20Logo.png">
-            </div>
-    
-            <div class="middle">
-                <input class="middle-input" type="text" placeholder="Search For">
-                <button class="middle-search">Search</button>
-            </div>
-    
-            <div class="right">
-                <div class="right-services">Services</div>
-                <div class="right-subscribe">Subscribe</div>
-                <div class="right-about">About Us</div>
-                <div class="right-contact">Contact Us</div>
+        <div class="left">
+            <img class="header-logo-1" src="../../images/main_logo.png">
+            <img class="header-logo-2" src="../../images/ncrc_logo.png">
+            <img class="header-logo-4" src="../../images/G20Logo.png">
+        </div>
+
+        <div class="middle">
+            <input class="middle-input" type="text" placeholder="Search For">
+            <button class="middle-search">Search</button>
+        </div>
+
+        <div class="right">
+            <div class="right-services">Services</div>
+            <div class="right-subscribe">Subscribe</div>
+            <div class="right-about">About Us</div>
+            <div class="right-contact">Contact Us</div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <a class="sidebar-atag" href="JailerHomePage.html"><div class="sidebar-icon"><img class="sidebar-img" src="../../images/home.png"><div class="home">Home</div></div></a>
+        <a class="sidebar-atag" href="ProfilePage.html"><div class="sidebar-icon"><img class="profile-img sidebar-img" src="../../images/profile2.jpg"><div class="home">Profile</div></div></a>
+        <a class="sidebar-atag" href="../../Pages/HomePages/LoginPage.html"><div class="sidebar-icon2"><img class="logout-img sidebar-img" src="../../images/logout3.png"><div class="explore">Sign out</div></div></a>
+    </div>
+
+    <div class="background">
+        <img class="background-image" src="../../images/background.webp" alt="">
+    </div>
+
+    <div class="main">
+        <header>
+            <h1>Criminal Database</h1>
+        </header>
+        <main>
+            <div id="criminal-list" class="grid"></div>
+        </main>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="criminal-details"></div>
             </div>
         </div>
-    
-        <div class="sidebar">
-            <a class="sidebar-atag" href="JailerHomePage.html"><div class="sidebar-icon"><img class="sidebar-img" src="../../images/home.png"><div class="home">Home</div></div></a>
-            <a class="sidebar-atag" href="ProfilePage.html"><div class="sidebar-icon"><img class="profile-img sidebar-img" src="../../images/profile2.jpg"><div class="home">Profile</div></div></a>
-            <a class="sidebar-atag" href="../../Pages/HomePages/LoginPage.html"><div class="sidebar-icon2"><img class="logout-img sidebar-img" src="../../images/logout3.png"><div class="explore">Sign out</div></div></a>
-        </div>
-    
-        <div class="main">
-            <div>List of Criminals</div>
-        </div>
- 
-    </body>
+    </div>
+
+    <script src="../../Script/Jailer/ViewCriminal.js"></script>
+</body>
 </html>

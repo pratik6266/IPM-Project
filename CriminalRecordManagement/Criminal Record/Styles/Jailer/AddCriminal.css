@@ -233,6 +233,8 @@ button {
 .background-image{
     border: solid;
     height: 1240px;
+    width: 100%;
+    object-fit: cover;
 }
 
 /* Main Content */
