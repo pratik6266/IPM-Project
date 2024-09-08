@@ -1,0 +1,365 @@
+body
+{
+    font-family: Arial;
+    height: 800px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4CAF50;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Header CSS */
+
+.header
+{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    background-color: rgb(199, 199, 199);
+    top: 0;
+    right: 0;
+    left: 0;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    z-index: 10;
+}
+
+.left
+{
+    margin-left: 16px;
+    min-width: 600px;
+}
+
+.header-logo-1
+{
+    width: 50px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.header-logo-2
+{
+    width: 200px;
+    margin-right: 15px;
+}
+
+.header-logo-3
+{
+    width: 100px;
+    margin-right: 15px;
+}
+
+.header-logo-4
+{
+    width: 100px;
+    margin-right: 15px;
+}
+
+.middle
+{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-bottom: 0;
+    align-items: center;
+    margin-top: 8px;
+    max-width: 700px;
+}
+
+.middle-search
+{
+    height: 35px;
+    color: white;
+    background-color: #4CAF50;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0px;
+    margin-bottom: 30px;
+    padding: 0;
+    cursor: pointer;
+    width: 70px;
+}
+
+.middle-input
+{
+    height: 35px;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-style: solid;
+    border-color: #4CAF50;
+}
+
+
+.middle-input::placeholder
+{
+    font-weight: bold;
+    color: black;
+
+}
+
+.right
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 210px;
+}
+
+.right-options
+{
+    display: absolute;
+}
+
+.right-about, .right-services, .right-contact, .right-subscribe
+{
+    cursor: pointer;
+    transition: background-color 0.5s;
+    padding: 7px 12px;
+    border-radius: 100px;
+}
+
+.right-about:hover, .right-services:hover, .right-contact:hover, .right-subscribe:hover
+{
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Sidebar CSS */
+
+.sidebar{
+    width:101px;
+    position: fixed;
+    background-color: rgb(199, 199, 199);
+    color:rgb(0, 0, 0);
+    bottom:0;
+    left:0;
+    top:80px;
+    z-index: 100;
+    border:solid;
+    border-color:rgb(199, 199, 199);
+}
+
+.sidebar-icon{
+    background-color: rgb(199, 199, 199);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    cursor: pointer;
+    margin-bottom: -8px;
+}
+
+.sidebar-icon:hover{
+    background-color: white;
+}
+
+.sidebar img{
+    height: 45px;
+}
+
+.sidebar div{
+    margin-top:8px;
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.sidebar-icon2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    cursor: pointer;
+}
+
+.sidebar-img{
+    mix-blend-mode: multiply;
+}
+
+.profile-img{
+    width: 50px;
+    object-fit: cover;
+
+}
+
+.logout-img{
+    object-fit: contain;
+}
+
+.sidebar-atag{
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar-icon2:hover{
+    background-color: white;
+    color: red;
+}
+
+/* Background Image */
+
+.background{
+    margin-top: -60px;
+    position: absolute;
+    z-index: 0;
+}
+
+.background-image{
+    border: solid;
+    height: 900px;
+}
+
+/* Main Content */
+
+.main{
+    position: relative;
+    z-index: 9;
+    margin-top: 110px;
+    margin-left: 120px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.profile-card {
+    background-color: rgb(226, 226, 226);
+    border-radius: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+}
+
+.profileInfo{
+    text-align: left;
+    padding-left: 120px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+}
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.profile-info {
+    margin-bottom: 10px;
+}
+.profile-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+.profile-value {
+    color: #666;
+}
+.edit-form {
+    display: none;
+}
+.edit-form.active {
+    display: block;
+}
+.edit-form input, .edit-form select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.button.cancel {
+    background-color: #f44336;
+}
+.button.delete {
+    background-color: #ff9800;
+}
+.error-message {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 8px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
