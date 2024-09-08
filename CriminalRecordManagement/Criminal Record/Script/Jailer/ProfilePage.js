@@ -1,8 +1,8 @@
 let userData = {
-    name: "Pratik Raj",
-    userId: "PR786",
-    email: "pratikraj220011@gmail.com",
-    phone: "9693894120",
+    name: "Sample Data",
+    userId: "Sample-Id",
+    email: "sample@gmail.com",
+    phone: "8675634820",
     gender: "Male",
     role: "Jailer",
     photoUrl: "../../images/user.png",
@@ -15,7 +15,7 @@ function updateProfile(data) {
     updateProfileInfo("profileEmail", "Email", data.email);
     updateProfileInfo("profilePhone", "Phone", formatPhoneNumber(data.phone));
     updateProfileInfo("profileGender", "Gender", data.gender);
-    updateProfileInfo("profileRole", "Role", data.role);
+    // updateProfileInfo("profileRole", "Role", data.role);
     document.getElementById("profilePhoto").src = data.photoUrl;
 }
 
@@ -122,10 +122,10 @@ function changePassword() {
     const confirmPassword = document.getElementById("confirmPassword").value;
     const passwordError = document.getElementById("passwordError");
 
-    if (currentPassword !== userData.password) {
-        passwordError.textContent = "Current password is incorrect.";
-        return;
-    }
+    // if (currentPassword !== userData.password) {
+    //     passwordError.textContent = "Current password is incorrect.";
+    //     return;
+    // }
 
     if (newPassword !== confirmPassword) {
         passwordError.textContent = "New passwords do not match.";
@@ -149,6 +149,7 @@ function deleteProfile() {
     profileCard.innerHTML = "<h2>Profile Deleted</h2>";
     hideModal("deleteConfirmModal");
     alert("Profile deleted successfully!");
+    window.location.href="../Homepages/LoginPage.html";
 }
 
 document.getElementById("editButton").addEventListener("click", () => toggleEditMode(true));

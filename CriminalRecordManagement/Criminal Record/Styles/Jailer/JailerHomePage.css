@@ -267,13 +267,14 @@ button {
 .linka{
     color: black;
     width: 302px;
+
 }
 
 .add-criminal{
     background-color: rgb(226, 226, 226);
     display: inline-block;
-    border-color: black;
-    border: solid;
+    /* border-color: black;
+    border: solid; */
     width: 300px;
     border-width: 2px;
     height: 100px;

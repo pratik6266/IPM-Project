@@ -222,9 +222,24 @@ button {
     color: red;
 }
 
+/* Background Image */
+
+.background{
+    margin-top: -60px;
+    position: absolute;
+    z-index: 0;
+}
+
+.background-image{
+    border: solid;
+    height: 900px;
+}
+
 /* Main Content */
 
 .main{
+    position: relative;
+    z-index: 9;
     margin-top: 110px;
     margin-left: 120px;
 }
@@ -239,12 +254,18 @@ body {
     margin: 0;
 }
 .profile-card {
-    background-color: white;
-    border-radius: 8px;
+    background-color: rgb(226, 226, 226);
+    border-radius: 18px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
+    width: 400px;
 }
+
+.profileInfo{
+    text-align: left;
+    padding-left: 120px;
+}
+
 .profile-photo {
     width: 150px;
     height: 150px;
