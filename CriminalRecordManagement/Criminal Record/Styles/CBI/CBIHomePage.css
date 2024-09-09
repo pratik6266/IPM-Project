@@ -249,11 +249,11 @@ button {
 }
 
 .top{
-    margin-left: 550px;
+    margin-left: 620px;
     text-decoration: underline;
     font-size: 50px;
     margin-bottom: 50px;
-    width: 370px;
+    width: 250px;
 }
 
 .top:hover{
