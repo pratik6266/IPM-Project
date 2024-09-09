@@ -4,7 +4,7 @@ let userData = {
     email: "sample@gmail.com",
     phone: "8675634820",
     gender: "Male",
-    role: "Jailer",
+    role: "Administrator",
     photoUrl: "../../images/user.png",
     password: "password123" // This is just for demonstration. In a real app, never store passwords in plain text.
 };
