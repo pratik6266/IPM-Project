@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead {
+                display: none;
+            }
+            tr {
+                margin-bottom: 15px;
+            }
+            td {
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-left: 10px;
+                text-align: left;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Criminal Database</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Criminal ID</th>
+        <th>Name</th>
+        <th>Left Photo</th>
+        <th>Right Photo</th>
+        <th>Front Photo</th>
+        <th>Crimes Committed</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="criminal : ${criminals}">
+        <tr>
+            <td th:text="${criminal.criminalId}"></td>
+            <td th:text="${criminal.name}"></td>
+            <td>
+                <img th:if="${criminal.leftPhoto != null}"
+                     src="data:image/jpeg;base64, [[${#imageUtils.encodeToBase64(criminal.leftPhoto)}]]" />
+            </td>
+            <td>
+                <img th:if="${criminal.rightPhoto != null}"
+                     src="data:image/jpeg;base64, [[${#imageUtils.encodeToBase64(criminal.rightPhoto)}]]" />
+            </td>
+            <td>
+                <img th:if="${criminal.frontPhoto != null}"
+                     src="data:image/jpeg;base64, [[${#imageUtils.encodeToBase64(criminal.frontPhoto)}]]" />
+            </td>
+            <td>
+                <ul>
+                    <th:block th:each="crime : ${criminal.crimes}">
+                        <li th:text="${crime.description}"></li>
+                    </th:block>
+                </ul>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

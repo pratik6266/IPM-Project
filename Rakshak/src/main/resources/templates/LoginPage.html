@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Rakshak-Login</title>
+    <link rel="stylesheet" href="/css/LoginPage.css">
+</head>
+
+<body>
+<div class="header">
+
+    <div class="left">
+        <img class="header-logo-1" src="/images/main_logo.png">
+        <img class="header-logo-2" src="/images/ncrc_logo.png">
+        <img class="header-logo-4" src="/images/G20Logo.png">
+    </div>
+
+    <!--        <div class="middle" display="none">-->
+    <!--            <input id="text" name="text" class="middle-input" type="text hidden" placeholder="Search For">-->
+    <!--            <button class="middle-search" >Search</button>-->
+    <!--        </div>-->
+
+    <div class="right">
+<!--        <div class="right-services">Services</div>-->
+<!--        <div class="right-subscribe">Subscribe</div>-->
+        <div class="right-about">About Us</div>
+        <div class="right-contact">Contact Us</div>
+    </div>
+
+</div>
+
+<div class="main">
+    <h1>Rakshak</h1>
+    <h3>Enter your login credentials</h3>
+    <div th:if="${error}" class="error-message" th:text="${error}" style="color:red;font-weight:bold"></div>
+    <form id="loginForm" th:action="@{/home/login}" th:object="${user}" method="post">
+        <!--            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+        <label for="username">
+            Username:
+        </label>
+        <input type="text"
+               id="username"
+               name="username"
+               placeholder="Enter your Username"
+               required>
+
+        <label for="password">
+            Password:
+        </label>
+
+        <input type="password"
+               id="password"
+               name="password"
+               placeholder="Enter your Password"
+               required>
+
+        <label for="role">
+            Role:
+        </label>
+        <select id="role" name="role" class="options" required>
+            <option selected value="">Select Role</option>
+            <option value="Admin">Admin</option>
+            <option value="CBI">CBI</option>
+            <option value="Jailer">Jailer</option>
+            <option value="Judges">Judge</option>
+            <option value="Police">Police</option>
+        </select>
+
+        <div class="wrap">
+            <button type="submit">
+                Submit
+            </button></div>
+    </form>
+    <p>Not registered?
+        <a href="/home/signup"
+           style="text-decoration: none;">
+            Create an account
+        </a>
+    </p>
+</div>
+
+
+<div class="footer">
+    <div class="footer-first">
+        <strong class="a">Get to know</strong>
+        <a class="a" href="">Privacy Policy</a>
+        <a class="a" href="">FAQ</a>
+        <a class="a" href="">Terms of Service</a>
+    </div>
+
+    <div class="footer-second">
+        <strong class="a">Grievance</strong>
+        <a class="a" href="">CPGRAMS</a>
+        <a class="a" href="">National Consumer Helpline</a>
+    </div>
+
+    <div class="footer-Third">
+        <strong class="a">Quick Links</strong>
+        <a class="a" href="">About us</a>
+        <a class="a" href="">Dashboard</a>
+        <a class="a" href="">Contact Us</a>
+        <a class="a" href="">Accessibility</a>
+    </div>
+
+    <div class="footer-fourth">
+        <strong class="a">Useful Links</strong>
+        <a class="b" href="https://negd.gov.in/" target="_blank"><img src="/images/footer1.svg" alt=""></a>
+        <a class="b" href="https://www.digitalindia.gov.in/" target="_blank"><img src="/images/footer2.svg" alt=""></a>
+        <a class="b" href="https://www.mygov.in/" target="_blank"><img src="/images/footer3.svg" alt=""></a>
+        <a class="b" href="https://www.india.gov.in/" target="_blank"><img src="/images/footer4.svg" alt=""></a>
+    </div>
+</div>
+
+<!--  <script src="/js/LoginPage.js"></script>-->
+</body>
+
+</html>

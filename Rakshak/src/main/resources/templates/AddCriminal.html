@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Criminal</title>
+  <style>
+    :root {
+        --primary-color: #1a5f7a;
+        --secondary-color: #57c5b6;
+        --accent-color: #159895;
+        --text-color: #333;
+        --background-color: #f5f5f5;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1rem 0;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="file"], input[type="time"], input[type="date"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    button {
+        padding: 10px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0f7270;
+    }
+
+    .crime-section {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .image-preview {
+        margin-top: 10px;
+        max-width: 100px; /* Adjust width for preview */
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <div class="logo">CRMS</div>
+    <ul class="nav-links">
+      <li><a th:href="@{/home}">Home</a></li>
+      <li><a th:href="@{/criminals/view}">Criminals</a></li>
+      <li><a th:href="@{/home}" id="contact-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Add Criminal</h1>
+  <div class="form-container">
+    <form th:action="@{/criminals/add}" method="POST" enctype="multipart/form-data">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="leftPhoto">Left Photo:</label>
+      <input type="file" id="leftPhoto" name="leftPhoto" accept="image/*" onchange="previewImage(event, 'leftPhotoPreview')">
+      <img id="leftPhotoPreview" class="image-preview" alt="Left Photo Preview" style="display:none;">
+
+      <label for="rightPhoto">Right Photo:</label>
+      <input type="file" id="rightPhoto" name="rightPhoto" accept="image/*" onchange="previewImage(event, 'rightPhotoPreview')">
+      <img id="rightPhotoPreview" class="image-preview" alt="Right Photo Preview" style="display:none;">
+
+      <label for="frontPhoto">Front Photo:</label>
+      <input type="file" id="frontPhoto" name="frontPhoto" accept="image/*" onchange="previewImage(event, 'frontPhotoPreview')">
+      <img id="frontPhotoPreview" class="image-preview" alt="Front Photo Preview" style="display:none;">
+
+      <label for="retinaScan">Retina Scan:</label>
+      <input type="file" id="retinaScan" name="retinaScan" accept="image/*" onchange="previewImage(event, 'retinaScanPreview')">
+      <img id="retinaScanPreview" class="image-preview" alt="Retina Scan Preview" style="display:none;">
+
+      <label for="fingerprintScan">Fingerprint Scan:</label>
+      <input type="file" id="fingerprintScan" name="fingerprintScan" accept="image/*" onchange="previewImage(event, 'fingerprintScanPreview')">
+      <img id="fingerprintScanPreview" class="image-preview" alt="Fingerprint Scan Preview" style="display:none;">
+
+      <div id="crimeContainer">
+        <h2>Crimes Committed</h2>
+        <div class="crime-section">
+          <label for="crimeDescription">Crime Description:</label>
+          <input type="text" id="crimeDescription" name="crimeDescriptions[]" required>
+
+          <label for="placeOfCrime">Place of Crime:</label>
+          <input type="text" id="placeOfCrime" name="placeOfCrimes[]" required>
+
+          <label for="dateOfCrime">Date of Crime:</label>
+          <input type="date" id="dateOfCrime" name="dateOfCrimes[]" required>
+
+          <label for="timeOfCrime">Time of Crime:</label>
+          <input type="time" id="timeOfCrime" name="timeOfCrimes[]" required>
+
+          <label for="victimDetails">Victim Details:</label>
+          <input type="text" id="victimDetails" name="victimDetails[]" required>
+        </div>
+      </div>
+      <br>
+      <button type="button" onclick="addCrime()">Add Another Crime</button>
+      <button type="submit">Add Criminal</button>
+    </form>
+  </div>
+</main>
+
+<script>
+  function previewImage(event, previewId) {
+      const file = event.target.files[0];
+      const preview = document.getElementById(previewId);
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+      }
+  }
+
+  function addCrime() {
+      const crimeSection = document.createElement('div');
+      crimeSection.className = 'crime-section';
+      crimeSection.innerHTML = `
+          <label for="crimeDescription">Crime Description:</label>
+          <input type="text" name="crimeDescriptions[]" required>
+
+          <label for="placeOfCrime">Place of Crime:</label>
+          <input type="text" name="placeOfCrimes[]" required>
+
+          <label for="dateOfCrime">Date of Crime:</label>
+          <input type="date" name="dateOfCrimes[]" required>
+
+          <label for="timeOfCrime">Time of Crime:</label>
+          <input type="time" name="timeOfCrimes[]" required>
+
+          <label for="victimDetails">Victim Details:</label>
+          <input type="text" name="victimDetails[]" required>
+      `;
+      document.getElementById('crimeContainer').appendChild(crimeSection);
+  }
+</script>
+</body>
+</html>
