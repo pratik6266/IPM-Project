@@ -24,7 +24,7 @@ public class HomeController {
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String rakshakHome()
     {
         return "HomePage";

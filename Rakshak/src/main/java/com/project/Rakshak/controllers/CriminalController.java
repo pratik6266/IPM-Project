@@ -5,18 +5,16 @@ import com.project.Rakshak.entities.Crime;
 import com.project.Rakshak.services.CriminalService;
 import com.project.Rakshak.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/criminals")
@@ -27,6 +25,7 @@ public class CriminalController {
 
     @Autowired
     private ImageUtils imageUtils;
+
 
     @GetMapping("/view")
     public String criminalDetails(Model model) {
@@ -99,6 +98,13 @@ public class CriminalController {
         criminalService.addCriminal(criminal);
 
         return "redirect:/criminals/view";
+    }
+
+    @GetMapping("/search/{id}")
+    public ResponseEntity<Criminal> searchCriminal(@PathVariable Long Id) {
+        Optional<Criminal> cri =  criminalService.searchCriminal(Id);
+        return cri.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+
     }
 
 

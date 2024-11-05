@@ -4,10 +4,12 @@ import com.project.Rakshak.entities.Role;
 import com.project.Rakshak.entities.User;
 import com.project.Rakshak.repositories.RoleRepository;
 import com.project.Rakshak.repositories.UserRepository;
+import com.project.Rakshak.repositories.UserViewRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +17,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserViewRepo userViewRepo;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -60,4 +65,5 @@ public class UserService {
         }
 
     }
+
 }

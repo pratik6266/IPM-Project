@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CriminalService {
 
+    @Autowired
     private final CriminalRepository criminalRepository;
 
     @Autowired
@@ -48,5 +50,9 @@ public class CriminalService {
             criminal.getCrimes().add(crime);
             criminalRepository.save(criminal);
         }
+    }
+
+    public Optional<Criminal> searchCriminal(Long Id) {
+        return criminalRepository.findById(Id);
     }
 }
