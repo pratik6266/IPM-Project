@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Criminal Locations</title>
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #57c5b6;
+            --accent-color: #159895;
+            --text-color: #333;
+            --background-color: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0f7270;
+        }
+
+        .location-records-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        .location-records-table th, .location-records-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .location-records-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .location-records-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .location-records-table tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="container">
+        <div class="logo">CRMS</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/criminals/view}">Criminals</a></li>
+            <li><a th:href="@{/criminals/location}">Criminal Locations</a></li>
+            <li><a th:href="@{/criminals/meetings}">Meeting Records</a></li>
+            <li><a th:href="@{/}" id="contact-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>Manage Criminal Locations</h1>
+
+    <div class="form-container">
+        <h2>Add Criminal Location</h2>
+        <form th:action="@{/criminals/location/add}" method="POST">
+            <label for="criminalId">Criminal ID:</label>
+            <input type="number" id="criminalId" name="criminalId" required>
+
+            <label for="jailLocation">Jail Location:</label>
+            <input type="text" id="jailLocation" name="jailLocation" required>
+
+            <label for="cellNo">Cell Number:</label>
+            <input type="text" id="cellNo" name="cellNo" required>
+
+            <button type="submit">Add Location</button>
+        </form>
+    </div>
+
+    <div class="location-records-container">
+        <h2>Criminal Location Records</h2>
+        <table class="location-records-table">
+            <thead>
+            <tr>
+                <th>Criminal ID</th>
+                <th>Jail Location</th>
+                <th>Cell Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Populated Criminal Location Data -->
+            <tr>
+                <td>20</td>
+                <td>City Prison - Block A</td>
+                <td>101</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>County Jail - Section B</td>
+                <td>202</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>State Penitentiary - Block C</td>
+                <td>303</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>Maximum Security Facility - Block D</td>
+                <td>404</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>High Security Prison - Section E</td>
+                <td>505</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>Federal Penitentiary - Block F</td>
+                <td>606</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>

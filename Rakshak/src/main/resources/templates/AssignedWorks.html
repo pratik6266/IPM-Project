@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Assigned Works</title>
+  <style>
+    :root {
+        --primary-color: #1a5f7a;
+        --secondary-color: #57c5b6;
+        --accent-color: #159895;
+        --text-color: #333;
+        --background-color: #f5f5f5;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1rem 0;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="date"], input[type="number"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    button {
+        padding: 10px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0f7270;
+    }
+
+    .assigned-works-table {
+        width: 100%;
+        margin-top: 30px;
+        border-collapse: collapse;
+    }
+
+    .assigned-works-table th, .assigned-works-table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .assigned-works-table th {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .assigned-works-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .assigned-works-table tr:hover {
+        background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <div class="logo">CRMS</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/criminals/view">Criminals</a></li>
+      <li><a href="/criminals/assignedWorks">Assigned Works</a></li>
+      <li><a href="/" id="contact-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Manage Criminal Assigned Works</h1>
+
+  <div class="form-container">
+    <h2>Assign New Work to Criminal</h2>
+    <form action="/assigned-works/add" method="POST">
+      <label for="criminalId">Criminal ID:</label>
+      <select id="criminalId" name="criminalId" required>
+        <option value="20">20 - Vikas Dubey</option>
+        <option value="21">21 - Devendra Sharma</option>
+        <option value="22">22 - Faheem Khan</option>
+        <option value="23">23 - Anees Ibrahim</option>
+        <option value="24">24 - Chota Shakeel</option>
+        <option value="25">25 - Lawrence Bishnoi</option>
+      </select>
+
+      <label for="workDescription">Work Description:</label>
+      <input type="text" id="workDescription" name="workDescription" required>
+
+      <label for="assignedDate">Assigned Date:</label>
+      <input type="date" id="assignedDate" name="assignedDate" required>
+
+      <label for="completionDate">Expected Completion Date:</label>
+      <input type="date" id="completionDate" name="completionDate" required>
+
+      <button type="submit">Assign Work</button>
+    </form>
+  </div>
+
+  <div class="assigned-works-container">
+    <h2>Assigned Works</h2>
+    <table class="assigned-works-table">
+      <thead>
+      <tr>
+        <th>Criminal ID</th>
+        <th>Work Description</th>
+        <th>Assigned Date</th>
+        <th>Expected Completion Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>20</td>
+        <td>Cleaning the Cell Block</td>
+        <td>2024-10-10</td>
+        <td>2024-10-15</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>Kitchen Duty</td>
+        <td>2024-10-12</td>
+        <td>2024-10-17</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>Maintenance of Garden</td>
+        <td>2024-10-14</td>
+        <td>2024-10-20</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>Electrical Work</td>
+        <td>2024-10-13</td>
+        <td>2024-10-18</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>Prison Laundry</td>
+        <td>2024-10-15</td>
+        <td>2024-10-22</td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>Garden Watering</td>
+        <td>2024-10-16</td>
+        <td>2024-10-21</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>

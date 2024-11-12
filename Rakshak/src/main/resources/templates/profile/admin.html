@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
 </div>
 
 <div class="sidebar">
-  <a class="sidebar-link" href="/home">
+  <a class="sidebar-link" href="/">
     <img class="sidebar-img" src="/images/home.png" alt="Home Icon">
     <span>Home</span>
   </a>
@@ -42,13 +42,13 @@
   <h1>Administrator</h1>
 
   <div class="grid">
-    <a class="grid-item" href="/view/all">
+    <a class="grid-item" href="/criminals/view">
       <div class="card">
         <p class="card-title">View Database</p>
         <p class="card-subtitle">Maintain The Database</p>
       </div>
     </a>
-    <a class="grid-item" href="#">
+    <a class="grid-item" href="">
       <div class="card">
         <p class="card-title">Limit Users Access</p>
         <p class="card-subtitle">Grant/Revoke Role Of Users</p>
@@ -60,10 +60,10 @@
         <p class="card-subtitle">Backup & Restore Data</p>
       </div>
     </a>
-    <a class="grid-item" href="#">
+    <a class="grid-item" th:href="@{/users/view}">
       <div class="card">
-        <p class="card-title">Monitor Jail Administration</p>
-        <p class="card-subtitle">Monitors Jail Workings</p>
+        <p class="card-title">View users</p>
+        <p class="card-subtitle">View and edit users</p>
       </div>
     </a>
   </div>

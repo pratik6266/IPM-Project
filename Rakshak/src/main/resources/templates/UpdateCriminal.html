@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Criminal</title>
+  <title>Update Criminal</title>
   <style>
     :root {
         --primary-color: #1a5f7a;
@@ -111,7 +111,7 @@
 
     .image-preview {
         margin-top: 10px;
-        max-width: 100px; /* Adjust width for preview */
+        max-width: 100px;
         height: auto;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -131,50 +131,53 @@
 </header>
 
 <main class="container">
-  <h1>Add Criminal</h1>
+  <h1>Update Criminal</h1>
   <div class="form-container">
-    <form th:action="@{/criminals/add}" method="POST">
+    <form th:action="@{/criminals/update/{id}(id=${criminal.id})}" method="POST">
+      <!-- Hidden Input for Criminal ID -->
+      <input type="hidden" name="id" value="${criminal.id}">
+
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="name" value="${criminal.name}" required>
 
       <label for="leftPhotoUrl">Left Photo URL:</label>
-      <input type="url" id="leftPhotoUrl" name="leftPhotoUrl" placeholder="Enter URL for Left Photo" >
+      <input type="url" id="leftPhotoUrl" name="leftPhotoUrl" value="${criminal.leftPhotoUrl}" placeholder="Enter URL for Left Photo">
 
       <label for="rightPhotoUrl">Right Photo URL:</label>
-      <input type="url" id="rightPhotoUrl" name="rightPhotoUrl" placeholder="Enter URL for Right Photo" >
+      <input type="url" id="rightPhotoUrl" name="rightPhotoUrl" value="${criminal.rightPhotoUrl}" placeholder="Enter URL for Right Photo">
 
       <label for="frontPhotoUrl">Front Photo URL:</label>
-      <input type="url" id="frontPhotoUrl" name="frontPhotoUrl" placeholder="Enter URL for Front Photo">
-
+      <input type="url" id="frontPhotoUrl" name="frontPhotoUrl" value="${criminal.frontPhotoUrl}" placeholder="Enter URL for Front Photo">
 
       <label for="retinaScanUrl">Retina Scan URL:</label>
-      <input type="url" id="retinaScanUrl" name="retinaScanUrl" placeholder="Enter URL for Retina Scan" >
+      <input type="url" id="retinaScanUrl" name="retinaScanUrl" value="${criminal.retinaScanUrl}" placeholder="Enter URL for Retina Scan">
 
       <label for="fingerprintScanUrl">Fingerprint Scan URL:</label>
-      <input type="url" id="fingerprintScanUrl" name="fingerprintScanUrl" placeholder="Enter URL for Fingerprint Scan" >
+      <input type="url" id="fingerprintScanUrl" name="fingerprintScanUrl" value="${criminal.fingerprintScanUrl}" placeholder="Enter URL for Fingerprint Scan">
 
       <div id="crimeContainer">
         <h2>Crimes Committed</h2>
-        <div class="crime-section">
+        <!-- Loop through crimes and pre-fill -->
+        <div class="crime-section" th:each="crime : ${criminal.crimes}">
           <label for="crimeDescription">Crime Description:</label>
-          <input type="text" id="crimeDescription" name="crimeDescriptions[]" required>
+          <input type="text" id="crimeDescription" name="crimeDescriptions[]" value="${crime.description}" required>
 
           <label for="placeOfCrime">Place of Crime:</label>
-          <input type="text" id="placeOfCrime" name="placeOfCrimes[]" required>
+          <input type="text" id="placeOfCrime" name="placeOfCrimes[]" value="${crime.place}" required>
 
           <label for="dateOfCrime">Date of Crime:</label>
-          <input type="date" id="dateOfCrime" name="dateOfCrimes[]" required>
+          <input type="date" id="dateOfCrime" name="dateOfCrimes[]" value="${crime.date}" required>
 
           <label for="timeOfCrime">Time of Crime:</label>
-          <input type="time" id="timeOfCrime" name="timeOfCrimes[]" required>
+          <input type="time" id="timeOfCrime" name="timeOfCrimes[]" value="${crime.time}" required>
 
           <label for="victimDetails">Victim Details:</label>
-          <input type="text" id="victimDetails" name="victimDetails[]">
+          <input type="text" id="victimDetails" name="victimDetails[]" value="${crime.victimDetails}">
         </div>
       </div>
       <br>
       <button type="button" onclick="addCrime()">Add Another Crime</button>
-      <button type="submit">Add Criminal</button>
+      <button type="submit">Update Criminal</button>
     </form>
   </div>
 </main>
@@ -197,7 +200,7 @@
           <input type="time" name="timeOfCrimes[]" required>
 
           <label for="victimDetails">Victim Details:</label>
-          <input type="text" name="victimDetails[]" required>
+          <input type="text" name="victimDetails[]">
       `;
       document.getElementById('crimeContainer').appendChild(crimeSection);
   }

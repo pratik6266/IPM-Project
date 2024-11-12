@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Details - CRMS</title>
+  <style>
+    :root {
+        --primary-color: #1a5f7a;
+        --secondary-color: #57c5b6;
+        --accent-color: #159895;
+        --text-color: #333;
+        --background-color: #f5f5f5;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .user-details-table-container {
+        margin-top: 40px;
+    }
+
+    .user-details-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .user-details-table th, .user-details-table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .user-details-table th {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .user-details-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .user-details-table tr:hover {
+        background-color: #ddd;
+    }
+
+    .edit-button {
+        padding: 8px 16px;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .edit-button:hover {
+        background-color: var(--accent-color);
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 30px;
+    }
+
+    button:hover {
+        background-color: #0f7270;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>User Management</h1>
+</header>
+
+<main class="container">
+  <!-- User Details Table Section -->
+  <div class="user-details-table-container">
+    <h2>All User Details</h2>
+    <table class="user-details-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>3</td>
+        <td>jailer1@gmail.com</td>
+        <td>Jailer1</td>
+        <td>Jailer</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>police1@gmail.com</td>
+        <td>police1</td>
+        <td>Police</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>cbi1@gmail.com</td>
+        <td>cbi1</td>
+        <td>CBI</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>judge1@gmail.com</td>
+        <td>judge1</td>
+        <td>Judge</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>admin@gmail.com</td>
+        <td>admin</td>
+        <td>Admin</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>pranav@gmail.com</td>
+        <td>pranav</td>
+        <td>Jailer</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>police2@gmail.com</td>
+        <td>police2</td>
+        <td>Police</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>test@gmail.com</td>
+        <td>test</td>
+        <td>Judge</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>judge@gmail.com</td>
+        <td>judge</td>
+        <td>Judge</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button onclick="window.location.href='/dashboard'">Back to Dashboard</button>
+</main>
+
+</body>
+</html>

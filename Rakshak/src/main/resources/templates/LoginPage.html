@@ -34,7 +34,7 @@
     <h3>Enter your login credentials</h3>
     <div th:if="${error}" class="error-message" th:text="${error}" style="color:red;font-weight:bold"></div>
     <form id="loginForm" th:action="@{/home/login}" th:object="${user}" method="post">
-        <!--            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
         <label for="username">
             Username:
         </label>

@@ -12,31 +12,31 @@ public class ProfileController {
 
     @GetMapping("/admin/{username}")
     public String adminProfile(@PathVariable("username") String username, Model model) {
-        model.addAttribute("username", username);
+        model.addAttribute("username", username); // Add username to model for use in the view
         return "profile/admin";
     }
 
     @GetMapping("/jailer/{username}")
     public String jailerProfile(@PathVariable("username") String username, Model model) {
-        model.addAttribute("username", username);
+        model.addAttribute("username", username); // Add username to model for use in the view
         return "profile/jailer";
     }
 
     @GetMapping("/cbi/{username}")
     public String cbiProfile(@PathVariable("username") String username, Model model) {
-        model.addAttribute("username", username);
+        model.addAttribute("username", username); // Add username to model for use in the view
         return "profile/cbi";
     }
 
     @GetMapping("/police/{username}")
     public String policeProfile(@PathVariable("username") String username, Model model) {
-        model.addAttribute("username", username);
+        model.addAttribute("username", username); // Add username to model for use in the view
         return "profile/police";
     }
 
     @GetMapping("/judge/{username}")
     public String judgeProfile(@PathVariable("username") String username, Model model) {
-        model.addAttribute("username", username);
+        model.addAttribute("username", username); // Add username to model for use in the view
         return "profile/judge";
     }
 }

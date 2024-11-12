@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Criminals</title>
+  <style>
+    :root {
+        --primary-color: #1a5f7a;
+        --secondary-color: #57c5b6;
+        --accent-color: #159895;
+        --text-color: #333;
+        --background-color: #f5f5f5;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 1rem 0;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="url"], input[type="number"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    button {
+        padding: 10px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0f7270;
+    }
+
+    .search-results {
+        margin-top: 20px;
+    }
+
+    .criminal-card {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+    }
+
+    .criminal-card img {
+        max-width: 100px;
+        border-radius: 4px;
+    }
+
+    .criminal-card h3 {
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <div class="logo">CRMS</div>
+    <ul class="nav-links">
+      <li><a th:href="@{/}">Home</a></li>
+      <li><a th:href="@{/criminals/view}">Criminals</a></li>
+      <li><a th:href="@{/}" id="contact-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Search Criminals</h1>
+  <div class="form-container">
+    <form th:action="@{/criminals/search}" method="GET">
+      <label for="criminalId">Criminal ID:</label>
+      <input type="number" id="criminalId" name="criminalId" placeholder="Enter Criminal ID" />
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter Criminal's Name" />
+
+      <label for="leftPhotoUrl">Left Photo URL:</label>
+      <input type="url" id="leftPhotoUrl" name="leftPhotoUrl" placeholder="Enter Left Photo URL" />
+
+      <label for="rightPhotoUrl">Right Photo URL:</label>
+      <input type="url" id="rightPhotoUrl" name="rightPhotoUrl" placeholder="Enter Right Photo URL" />
+
+      <label for="frontPhotoUrl">Front Photo URL:</label>
+      <input type="url" id="frontPhotoUrl" name="frontPhotoUrl" placeholder="Enter Front Photo URL" />
+
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div class="search-results" th:if="${criminals != null and criminals.size() > 0}">
+    <h2>Search Results:</h2>
+    <div th:each="criminal : ${criminals}" class="criminal-card">
+      <h3 th:text="${criminal.name}"></h3>
+      <p><strong>ID:</strong> <span th:text="${criminal.criminalId}"></span></p>
+      <p><strong>Left Photo:</strong> <img th:src="${criminal.leftPhotoUrl}" alt="Left Photo" /></p>
+      <p><strong>Right Photo:</strong> <img th:src="${criminal.rightPhotoUrl}" alt="Right Photo" /></p>
+      <p><strong>Front Photo:</strong> <img th:src="${criminal.frontPhotoUrl}" alt="Front Photo" /></p>
+    </div>
+  </div>
+
+<!--  <div th:if="${criminals == null or criminals.size() == 0}">-->
+<!--    <p>No criminals found matching the search criteria.</p>-->
+<!--  </div>-->
+</main>
+
+</body>
+</html>
